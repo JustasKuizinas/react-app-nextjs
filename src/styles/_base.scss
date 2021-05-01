@@ -1,0 +1,40 @@
+:root {
+  --color-primary: #f65261;
+  --font-primary: 'Open Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+input {
+  border: none;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: #232323;
+  color: #fff;
+  font-size: 1.6rem;
+  height: 100%;
+
+  &.modal-open {
+    overflow: hidden;
+  }
+}
+button {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}

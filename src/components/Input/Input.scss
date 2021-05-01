@@ -1,0 +1,63 @@
+.inpt {
+  position: relative;
+
+  &__calendar {
+    display: none;
+    font-size: 25px;
+    position: absolute;
+    right: 20px;
+    top: 12px;
+    color: var(--color-primary);
+  }
+
+  input {
+    width: 100%;
+    position: relative;
+    &[type='date'] + .inpt__calendar {
+      display: block;
+    }
+  }
+
+  input::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+  }
+
+  &.-primary {
+    input {
+      height: 50px;
+      font-size: 1.7rem;
+      color: #fff;
+      background-color: #323232;
+      border-radius: 3px;
+      padding: 0 20px;
+
+      &::placeholder {
+        color: #6d6d6d;
+      }
+    }
+  }
+  &.-secondary {
+    input {
+      height: 60px;
+      color: #fff;
+      padding: 0 20px;
+      border-radius: 5px;
+      background-color: rgba(28, 28, 28, 0.8);
+      font-size: 2rem;
+      width: 100%;
+
+      &::placeholder {
+        color: #6d6d6d;
+      }
+    }
+  }
+}

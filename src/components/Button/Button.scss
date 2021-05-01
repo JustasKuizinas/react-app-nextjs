@@ -1,0 +1,43 @@
+.btn {
+  text-decoration: none;
+  display: inline-block;
+  &.-primary {
+    height: 60px;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: var(--color-primary);
+    border-radius: 5px;
+    font-size: 2rem;
+    padding: 0 20px;
+  }
+ 
+  &.-secondary {
+    background-color: rgba(83, 83, 83, 0.8);
+    text-transform: uppercase;
+    color: var(--color-primary);
+    border-radius: 5px;
+    height: 40px;
+    padding: 0 20px; 
+    font-size: 1.8rem;
+  }
+  &.-trenary {
+    border-radius: 3px;
+    height: 50px;
+    padding: 0 20px;
+    font-size: 1.8rem;
+    background-color: var(--color-primary);
+    text-transform: uppercase;
+    color: #fff;
+  }
+  &.-outline {
+    border: solid 2px var(--color-primary);
+    color: var(--color-primary);
+    border-radius: 3px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 20px;
+    font-size: 1.8rem;
+    background-color: transparent;
+    text-transform: uppercase;
+  }
+}

@@ -1,0 +1,62 @@
+.form-inpt{
+  position: relative;
+  &.has-error{
+    input{
+      border-color: var(--color-primary);
+    }
+  }
+
+  &__calendar {
+    display: none;
+    font-size: 25px;
+    position: absolute;
+    right: 20px;
+    top: 40px;
+    color: var(--color-primary);
+  }
+  &__error {
+    font-size: 1.2rem;
+    color: var(--color-primary);
+    height: 12px;
+    margin-top: 5px;
+  }
+  
+  input {
+    border:solid 1px transparent; 
+    width: 100%;
+    position: relative;
+    &[type='date'] + .form-inpt__calendar {
+      display: block;
+    }
+  }
+  
+  input::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+  }
+  
+  
+    input {
+      height: 50px;
+      font-size: 1.7rem;
+      color: #fff;
+      background-color: #323232;
+      border-radius: 3px;
+      padding: 0 20px;
+  
+      &::placeholder {
+        color: #6d6d6d;
+      }
+    }
+  
+}
+
+
