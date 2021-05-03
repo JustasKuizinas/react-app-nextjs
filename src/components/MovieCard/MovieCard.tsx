@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 import MovieOptions from '../MovieOptions/MovieOptions';
 import { MODAL } from '../../types';
 import { __dc } from '../../helpers';
+import { useRouter } from 'next/router';
 
 const MovieCard: React.FC<any> = props => {
   let genres = '';
   let genresArr = props.movie.genres;
-
+  let router = useRouter();
+ 
   if (genresArr.length == 1) {
     genres = props.movie.genres[0];
   } else if (genresArr.length == 2) {
@@ -18,12 +20,12 @@ const MovieCard: React.FC<any> = props => {
   }
 
   function setActiveMovie() {
-    //history.push('/film/'+props.movie.id)
+    router.push('/?filmID=' + props.movie.id+45);
   }
 
   function editMovie() {
     props.openModal(MODAL.MOVIE_EDIT, {
-        movie: __dc(props.movie),
+      movie: __dc(props.movie),
     });
   }
 

@@ -9,51 +9,51 @@ import { connect, useDispatch, useSelector } from 'react-redux';
 import { movieFilter } from '../../redux/movie/movie.actions';
 import { setSearch } from '../../redux/search';
 import { getFilteredMovies, getMovie } from '../../redux/movie/movie.selectors';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 
 const Header: React.FC<any> = props => {
   const dispatch = useDispatch();
-  const params: any = {}// useParams();
-  const history = function(){};// useHistory();
-  let activeMovie = null;
-  activeMovie = useSelector(getMovie(params.filmID));
+  const router = useRouter();
+  const filmID = +router.query.filmID;
+  let activeMovie = useSelector(getMovie(filmID));
   let movies = useSelector(getFilteredMovies());
-  let searchQuery = params.searchQuery;
+  let searchQuery:any = '';
 
   useEffect(() => {
-    console.log(movies, params.filmID, activeMovie);
+    console.log(router.query);
     if (activeMovie) {
       window.scrollTo(0, 0);
-    } 
-    if (movies.length > 0 && params.filmID && !activeMovie) {
-      // history.push('/404');
     }
-  }, [movies,activeMovie]);
+    if (movies.length > 0 && filmID && !activeMovie) {
+      router.push('/404');
+    }
+  }, [movies, activeMovie]);
+
+
 
   useEffect(() => {
-    if (searchQuery) {
+    if (router.query.search) {
+      searchQuery = router.query.search;
       dispatch(setSearch(searchQuery));
     } else {
+      searchQuery = '';
       dispatch(setSearch(''));
     }
-  }, [searchQuery]);
+  }, [router.query.search]);
 
   function closeMovieInfo() {
-    dispatch(setSearch(''));
-    // history.push('/');
+    router.push('', undefined, { shallow: true });
   }
-
+  
   function addMovie() {
     props.openModal(MODAL.MOVIE_ADD);
   }
 
   function doSearch(value) {
-    dispatch(setSearch(value));
     if (value.trim()) {
-      Router.push('/search/' + value);
-      // history.push('/search/' + value);
+      router.push('?search=' + value, undefined, { shallow: true });
     } else {
-      // history.push('/');
+      router.push('', undefined, { shallow: true });
     }
   }
 
